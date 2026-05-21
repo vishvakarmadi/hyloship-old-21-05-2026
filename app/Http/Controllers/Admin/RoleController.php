@@ -239,19 +239,21 @@ class RoleController extends Controller
             $user->role_action_on = now();
             $user->save();
         }
-        // Update Bank Details in Profile table
-        $profile_data = [
-            'bank_name' => $request->bank_name,
-            'beneficiary_name' => $request->beneficiary_name,
-            'account_no' => $request->account_no,
-            'ifsc_code' => $request->ifsc_code,
-            'account_type' => $request->account_type,
-        ];
+        // Update Bank Details in Profile table if provided
+        if ($request->filled('bank_name')) {
+            $profile_data = [
+                'bank_name' => $request->bank_name,
+                'beneficiary_name' => $request->beneficiary_name,
+                'account_no' => $request->account_no,
+                'ifsc_code' => $request->ifsc_code,
+                'account_type' => $request->account_type,
+            ];
 
-        Profile::updateOrCreate(
-            ['user_id' => $id],
-            $profile_data
-        );
+            Profile::updateOrCreate(
+                ['user_id' => $id],
+                $profile_data
+            );
+        }
         // dd($permissions);
         return redirect()->route('admin.role.user')->with('success', 'Admin User is updated successfully!');
     }

@@ -186,7 +186,7 @@ label.radio-card .card-content h5 {
                                                 </div>
                                             </div>
                                     </div>
-                                    <x-field type="text" label="Order Number" placeholder="Order Number" name="vendor_order_id" value="{{$ven}}" />
+                                    <x-field type="textarea" label="Order Number" size="col-md-2" placeholder="Order Number" name="vendor_order_id" value="{{$ven}}" />
                                     
                                     <x-field type="text" label="Buyer Name" size="col-md-2" placeholder="Buyer Name" name="buyer_name" value="{{$buyer_name}}" />
                                     <x-field type="select" name="payment_mode" size="col-md-2 select_style" label="Payment-mode" value="{{ $payment_mode}}"  :options="[['id'=>'6','name'=>'C.O.D'],['id'=>'12','name'=>'Pre-Paid']]" print="name" store="id"/>
@@ -238,7 +238,7 @@ label.radio-card .card-content h5 {
                                             
                                         </select>
                                     </div>
-                                    <x-field type="text" label="AWB" size="col-md-2"  class="AWBnum" placeholder="AWB" name="tracking_info" value="{{$trac}}" />
+                                    <x-field type="textarea" label="AWB" size="col-md-2"  class="AWBnum" placeholder="AWB" name="tracking_info" value="{{$trac}}" />
                                     
                                 </div>
                                 <div class="row">

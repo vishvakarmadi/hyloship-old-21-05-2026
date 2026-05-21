@@ -107,7 +107,8 @@ class OrderController extends Controller
             }
 
             if(isset($_REQUEST['vendor_order_id']) && $_REQUEST['vendor_order_id'] !=''){
-              $ven = explode(',',$_REQUEST['vendor_order_id']);
+              $ven = preg_split('/[\s,]+/', trim($_REQUEST['vendor_order_id']));
+              $ven = array_filter($ven);
               $order_q->whereIn('vendor_order_id', $ven);
             }
             if(isset($_REQUEST['status_order']) && $_REQUEST['status_order'] !=''){
@@ -199,7 +200,9 @@ class OrderController extends Controller
         $sellerId = request('seller_id', $user_id);
 
         if ($vendorOrderIds) {
-            $orderQuery->whereIn('vendor_order_id', explode(',', $vendorOrderIds));
+            $vendorOrderIds_Array = preg_split('/[\s,]+/', trim($vendorOrderIds));
+            $vendorOrderIds_Array = array_filter($vendorOrderIds_Array);
+            $orderQuery->whereIn('vendor_order_id', $vendorOrderIds_Array);
         }
         if (request('payment_mode')) {
             $orderQuery->where('payment_mode', request('payment_mode'));
@@ -459,11 +462,13 @@ public function printMultipleLabels(Request $request)
                 $sortDirection = $_REQUEST['sortDirection'];
              }
             if(isset($_REQUEST['vendor_order_id']) && $_REQUEST['vendor_order_id'] !=''){
-              $ven = explode(',',$_REQUEST['vendor_order_id']);
+              $ven = preg_split('/[\s,]+/', trim($_REQUEST['vendor_order_id']));
+              $ven = array_filter($ven);
               $order_q->whereIn('vendor_order_id', $ven);
             }
             if(isset($_REQUEST['tracking_info']) && $_REQUEST['tracking_info'] !=''){
-               $tracking_info_Array = explode(',',$_REQUEST['tracking_info']);
+               $tracking_info_Array = preg_split('/[\s,]+/', trim($_REQUEST['tracking_info']));
+               $tracking_info_Array = array_filter($tracking_info_Array);
                $order_q->whereIn('tracking_info', $tracking_info_Array);
             }
             if(isset($_REQUEST['order_status']) && $_REQUEST['order_status'] !='0'){
@@ -658,11 +663,13 @@ public function printMultipleLabels(Request $request)
                 $sortDirection = $_REQUEST['sortDirection'];
              }
             if(isset($_REQUEST['vendor_order_id']) && $_REQUEST['vendor_order_id'] !=''){
-              $ven = explode(',',$_REQUEST['vendor_order_id']);
+              $ven = preg_split('/[\s,]+/', trim($_REQUEST['vendor_order_id']));
+              $ven = array_filter($ven);
               $order_q->whereIn('vendor_order_id', $ven);
             }
             if(isset($_REQUEST['tracking_info']) && $_REQUEST['tracking_info'] !=''){
-               $tracking_info_Array = explode(',',$_REQUEST['tracking_info']);
+               $tracking_info_Array = preg_split('/[\s,]+/', trim($_REQUEST['tracking_info']));
+               $tracking_info_Array = array_filter($tracking_info_Array);
                $order_q->whereIn('tracking_info', $tracking_info_Array);
             }
             if(isset($_REQUEST['order_status']) && $_REQUEST['order_status'] !='0'){
@@ -9559,11 +9566,13 @@ public function onhold()
                 $order_q->where('payment_mode', $request->payment_mode);
             }
             if($request->has('vendor_order_id') && $request->vendor_order_id != ''){
-                $ven = explode(',', $request->vendor_order_id);
+                $ven = preg_split('/[\s,]+/', trim($request->vendor_order_id));
+                $ven = array_filter($ven);
                 $order_q->whereIn('vendor_order_id', $ven);
             }
             if($request->has('tracking_info') && $request->tracking_info != ''){
-                $tracking_info_Array = explode(',', $request->tracking_info);
+                $tracking_info_Array = preg_split('/[\s,]+/', trim($request->tracking_info));
+                $tracking_info_Array = array_filter($tracking_info_Array);
                 $order_q->whereIn('tracking_info', $tracking_info_Array);
             }
             if($request->has('order_status') && $request->order_status != '0'){

@@ -1,8 +1,8 @@
-@extends('admin.admin_layouts')
-@section('admin_content')
-@php
+
+<?php $__env->startSection('admin_content'); ?>
+<?php
 $session = Auth::guard('admin')->user();
-@endphp
+?>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="/public/admin/semantic.min.js"></script>
 <link rel="stylesheet" href="/public/admin/semantic.min.css">
@@ -148,13 +148,35 @@ label.radio-card .card-content h5 {
                     <!-- <h5 class="m-0 mt-2 font-weight-bold text-primary invoice-heading">Filter</h5> -->
                         <div class="col-md-9"><a href="javascript:void(0)" class="expand">Filters <?php if(empty($re_data)){ echo '<<';}else{ echo '>>';} ?></a></div>
                         <div class="col-md-3">
-                                <x-button type="import" route="{{ route('admin.bulkorder.create') }}" name="Import"/>
-                                <x-button type="create" route="{{ route('admin.order.create') }}" name="Create" />
+                                <?php if (isset($component)) { $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4 = $component; } ?>
+<?php $component = $__env->getContainer()->make(Illuminate\View\AnonymousComponent::class, ['view' => 'components.button','data' => ['type' => 'import','route' => ''.e(route('admin.bulkorder.create')).'','name' => 'Import']]); ?>
+<?php $component->withName('button'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php $component->withAttributes(['type' => 'import','route' => ''.e(route('admin.bulkorder.create')).'','name' => 'Import']); ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4)): ?>
+<?php $component = $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4; ?>
+<?php unset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4); ?>
+<?php endif; ?>
+                                <?php if (isset($component)) { $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4 = $component; } ?>
+<?php $component = $__env->getContainer()->make(Illuminate\View\AnonymousComponent::class, ['view' => 'components.button','data' => ['type' => 'create','route' => ''.e(route('admin.order.create')).'','name' => 'Create']]); ?>
+<?php $component->withName('button'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php $component->withAttributes(['type' => 'create','route' => ''.e(route('admin.order.create')).'','name' => 'Create']); ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4)): ?>
+<?php $component = $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4; ?>
+<?php unset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4); ?>
+<?php endif; ?>
                         </div>
                 </div>
                 
                 <div class="card-body">
-                    <form action="{{ route('admin.order.all') }}" method="GET">
+                    <form action="<?php echo e(route('admin.order.all')); ?>" method="GET">
                         <div class="col-md-12">
                             <?php $trac = $ven = $buyer_name =  $payment_mode = ''; $o_st=$c_id=0;
                             if(!empty($re_data)){
@@ -181,26 +203,60 @@ label.radio-card .card-content h5 {
                                         <label>Select Date Range</label><span class="required"> *</span>
                                             <div class="row">
                                                 <div class="col-md-6">
-                                                    <input class="form-control " type="date" name="start_date" required="" value="{{explode(' ',$re_data['start_date'])[0]}}" id="_1">
+                                                    <input class="form-control " type="date" name="start_date" required="" value="<?php echo e(explode(' ',$re_data['start_date'])[0]); ?>" id="_1">
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <input class="form-control " type="date" name="end_date" required="" value="{{explode(' ',$re_data['end_date'])[0]}}" id="_2">
+                                                    <input class="form-control " type="date" name="end_date" required="" value="<?php echo e(explode(' ',$re_data['end_date'])[0]); ?>" id="_2">
                                                 </div>
                                             </div>
                                     </div>
-                                    <x-field type="textarea" label="Order Number" size="col-md-2" placeholder="Order Number" name="vendor_order_id" value="{{$ven}}" />
+                                    <?php if (isset($component)) { $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4 = $component; } ?>
+<?php $component = $__env->getContainer()->make(Illuminate\View\AnonymousComponent::class, ['view' => 'components.field','data' => ['type' => 'textarea','label' => 'Order Number','size' => 'col-md-2','placeholder' => 'Order Number','name' => 'vendor_order_id','value' => ''.e($ven).'']]); ?>
+<?php $component->withName('field'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php $component->withAttributes(['type' => 'textarea','label' => 'Order Number','size' => 'col-md-2','placeholder' => 'Order Number','name' => 'vendor_order_id','value' => ''.e($ven).'']); ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4)): ?>
+<?php $component = $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4; ?>
+<?php unset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4); ?>
+<?php endif; ?>
                                     
-                                    <x-field type="text" label="Buyer Name" size="col-md-2" placeholder="Buyer Name" name="buyer_name" value="{{$buyer_name}}" />
-                                    <x-field type="select" name="payment_mode" size="col-md-2 select_style" label="Payment-mode" value="{{ $payment_mode}}"  :options="[['id'=>'6','name'=>'C.O.D'],['id'=>'12','name'=>'Pre-Paid']]" print="name" store="id"/>
+                                    <?php if (isset($component)) { $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4 = $component; } ?>
+<?php $component = $__env->getContainer()->make(Illuminate\View\AnonymousComponent::class, ['view' => 'components.field','data' => ['type' => 'text','label' => 'Buyer Name','size' => 'col-md-2','placeholder' => 'Buyer Name','name' => 'buyer_name','value' => ''.e($buyer_name).'']]); ?>
+<?php $component->withName('field'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php $component->withAttributes(['type' => 'text','label' => 'Buyer Name','size' => 'col-md-2','placeholder' => 'Buyer Name','name' => 'buyer_name','value' => ''.e($buyer_name).'']); ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4)): ?>
+<?php $component = $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4; ?>
+<?php unset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4); ?>
+<?php endif; ?>
+                                    <?php if (isset($component)) { $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4 = $component; } ?>
+<?php $component = $__env->getContainer()->make(Illuminate\View\AnonymousComponent::class, ['view' => 'components.field','data' => ['type' => 'select','name' => 'payment_mode','size' => 'col-md-2 select_style','label' => 'Payment-mode','value' => ''.e($payment_mode).'','options' => [['id'=>'6','name'=>'C.O.D'],['id'=>'12','name'=>'Pre-Paid']],'print' => 'name','store' => 'id']]); ?>
+<?php $component->withName('field'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php $component->withAttributes(['type' => 'select','name' => 'payment_mode','size' => 'col-md-2 select_style','label' => 'Payment-mode','value' => ''.e($payment_mode).'','options' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute([['id'=>'6','name'=>'C.O.D'],['id'=>'12','name'=>'Pre-Paid']]),'print' => 'name','store' => 'id']); ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4)): ?>
+<?php $component = $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4; ?>
+<?php unset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4); ?>
+<?php endif; ?>
                                     <div class="form-group col-md-2">
                                         <label class="form-control-label">Seller <small style="color:#999">(type to search)</small></label>
                                         <select name="seller_id" id="seller-search" class="form-control" style="width:100%">
                                             <option value="0">-- All Sellers --</option>
-                                            @foreach($sellers as $seller)
-                                                <option value="{{ $seller->id }}" {{ ($seller_id == $seller->id) ? 'selected' : '' }}>
-                                                    {{ $seller->name }}
+                                            <?php $__currentLoopData = $sellers; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $seller): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                <option value="<?php echo e($seller->id); ?>" <?php echo e(($seller_id == $seller->id) ? 'selected' : ''); ?>>
+                                                    <?php echo e($seller->name); ?>
+
                                                 </option>
-                                            @endforeach
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                         </select>
                                     </div>
                                     <div class="form-group col-md-2">
@@ -258,11 +314,33 @@ label.radio-card .card-content h5 {
                                             
                                         </select>
                                     </div>
-                                    <x-field type="textarea" label="AWB" size="col-md-2"  class="AWBnum" placeholder="AWB" name="tracking_info" value="{{$trac}}" />
+                                    <?php if (isset($component)) { $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4 = $component; } ?>
+<?php $component = $__env->getContainer()->make(Illuminate\View\AnonymousComponent::class, ['view' => 'components.field','data' => ['type' => 'textarea','label' => 'AWB','size' => 'col-md-2','class' => 'AWBnum','placeholder' => 'AWB','name' => 'tracking_info','value' => ''.e($trac).'']]); ?>
+<?php $component->withName('field'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php $component->withAttributes(['type' => 'textarea','label' => 'AWB','size' => 'col-md-2','class' => 'AWBnum','placeholder' => 'AWB','name' => 'tracking_info','value' => ''.e($trac).'']); ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4)): ?>
+<?php $component = $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4; ?>
+<?php unset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4); ?>
+<?php endif; ?>
                                     
                                 </div>
                                 <div class="row">
-                                    <x-button size="col-lg-3" type="submit" name="Search" />
+                                    <?php if (isset($component)) { $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4 = $component; } ?>
+<?php $component = $__env->getContainer()->make(Illuminate\View\AnonymousComponent::class, ['view' => 'components.button','data' => ['size' => 'col-lg-3','type' => 'submit','name' => 'Search']]); ?>
+<?php $component->withName('button'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php $component->withAttributes(['size' => 'col-lg-3','type' => 'submit','name' => 'Search']); ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4)): ?>
+<?php $component = $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4; ?>
+<?php unset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4); ?>
+<?php endif; ?>
                                 </div>
                             </div>
                             
@@ -276,25 +354,25 @@ label.radio-card .card-content h5 {
 
         <div class="sts">
         <i class="fa fa-info-circle"></i>
-        <span><b>Total Orders : <span class="badge-pill bg-primary">{{$totalOrdersCount}}</span></b></span>
+        <span><b>Total Orders : <span class="badge-pill bg-primary"><?php echo e($totalOrdersCount); ?></span></b></span>
         </div>
         <div class="col-xl-12">
-         @if($session->id =='211')
-            <a href="{{ route('get.track.update') }}" class="btn btn-info" style="font-size: 12px; padding: 5px 10px;">Update Status</a>
-        @endif
-        <form id="myForm" action="{{ route('admin.order.action') }}" method="POST">
-            @csrf
+         <?php if($session->id =='211'): ?>
+            <a href="<?php echo e(route('get.track.update')); ?>" class="btn btn-info" style="font-size: 12px; padding: 5px 10px;">Update Status</a>
+        <?php endif; ?>
+        <form id="myForm" action="<?php echo e(route('admin.order.action')); ?>" method="POST">
+            <?php echo csrf_field(); ?>
             <div class="card  new_orders">
                 <div class="header d-flex justify-content-between" style="padding-bottom: 0;">
                     <h2>Order List</h2>
-                     @php
+                     <?php
                         $ls = \App\Models\LabelSetting::where('user_id', $session->id)->first();
                         $printLabelText = ($ls && $ls->printer_type == 2) ? 'Print Labels (A4)' : 'Print Labels (Thermal 4x6)';
-                    @endphp
+                    ?>
                     <div class="form-group col-2 mb-0">
-                        <label class="mr-2">@lang('Action')</label>
+                        <label class="mr-2"><?php echo app('translator')->get('Action'); ?></label>
                         <select class="form-control" name="status" id="myselect">
-                            <option value="" selected disabled>@lang('Select One')</option>
+                            <option value="" selected disabled><?php echo app('translator')->get('Select One'); ?></option>
                              <option value="rto">Reverse Order</option> 
                             <!--<option value="ndr">NDR</option>-->
                             <option value="cancel">Cancel</option>
@@ -305,8 +383,8 @@ label.radio-card .card-content h5 {
                             <option value="clone">Clone</option>
                             <!--<option value="printlabel">Print Label (4/Page)</option>-->
                             <!--<option value="printlabel4x6">Print Label (4x6 Thermal)</option>-->
-                            <option value="printlabel">{{ $printLabelText }}</option>
-                            <!--<option value="invoice">@lang('Single Invoice')</option>-->
+                            <option value="printlabel"><?php echo e($printLabelText); ?></option>
+                            <!--<option value="invoice"><?php echo app('translator')->get('Single Invoice'); ?></option>-->
                             
                             
                         </select>
@@ -327,79 +405,79 @@ label.radio-card .card-content h5 {
                                             </label>
                                         </th>
                                         <th>
-                                            <a href="{{ route('admin.order.all', ['sortField' => 'id', 'sortDirection' => Request::get('sortDirection') == 'asc' && Request::get('sortField') == 'id' ? 'desc' : 'asc']) }}">
+                                            <a href="<?php echo e(route('admin.order.all', ['sortField' => 'id', 'sortDirection' => Request::get('sortDirection') == 'asc' && Request::get('sortField') == 'id' ? 'desc' : 'asc'])); ?>">
                                             O.ID
-                                            @if(Request::get('sortField') == 'id')
-                                                <i class="fa {{ Request::get('sortDirection') == 'asc' ? 'fa-sort-up' : 'fa-sort-down' }}"></i>
-                                            @endif
+                                            <?php if(Request::get('sortField') == 'id'): ?>
+                                                <i class="fa <?php echo e(Request::get('sortDirection') == 'asc' ? 'fa-sort-up' : 'fa-sort-down'); ?>"></i>
+                                            <?php endif; ?>
                                              </a>
                                             
                                         </th>
                                         <th>
-                                            <a href="{{ route('admin.order.all', ['sortField' => 'user_id', 'sortDirection' => Request::get('sortDirection') == 'asc' && Request::get('sortField') == 'user_id' ? 'desc' : 'asc']) }}">
+                                            <a href="<?php echo e(route('admin.order.all', ['sortField' => 'user_id', 'sortDirection' => Request::get('sortDirection') == 'asc' && Request::get('sortField') == 'user_id' ? 'desc' : 'asc'])); ?>">
                                             Seller
-                                            @if(Request::get('sortField') == 'user_id')
-                                                <i class="fa {{ Request::get('sortDirection') == 'asc' ? 'fa-sort-up' : 'fa-sort-down' }}"></i>
-                                            @endif
+                                            <?php if(Request::get('sortField') == 'user_id'): ?>
+                                                <i class="fa <?php echo e(Request::get('sortDirection') == 'asc' ? 'fa-sort-up' : 'fa-sort-down'); ?>"></i>
+                                            <?php endif; ?>
                                              </a>
                                             
                                         </th>
                                         <th>
-                                            <a href="{{ route('admin.order.all', ['sortField' => 'channel', 'sortDirection' => Request::get('sortDirection') == 'asc' && Request::get('sortField') == 'channel' ? 'desc' : 'asc']) }}">
+                                            <a href="<?php echo e(route('admin.order.all', ['sortField' => 'channel', 'sortDirection' => Request::get('sortDirection') == 'asc' && Request::get('sortField') == 'channel' ? 'desc' : 'asc'])); ?>">
                                             Channel
-                                            @if(Request::get('sortField') == 'channel')
-                                                <i class="fa {{ Request::get('sortDirection') == 'asc' ? 'fa-sort-up' : 'fa-sort-down' }}"></i>
-                                            @endif
+                                            <?php if(Request::get('sortField') == 'channel'): ?>
+                                                <i class="fa <?php echo e(Request::get('sortDirection') == 'asc' ? 'fa-sort-up' : 'fa-sort-down'); ?>"></i>
+                                            <?php endif; ?>
                                              </a>
                                         </th>
                                         <th>
-                                            <a href="{{ route('admin.order.all', ['sortField' => 'vendor_order_id', 'sortDirection' => Request::get('sortDirection') == 'asc' && Request::get('sortField') == 'vendor_order_id' ? 'desc' : 'asc']) }}">
+                                            <a href="<?php echo e(route('admin.order.all', ['sortField' => 'vendor_order_id', 'sortDirection' => Request::get('sortDirection') == 'asc' && Request::get('sortField') == 'vendor_order_id' ? 'desc' : 'asc'])); ?>">
                                             Order Number
-                                            @if(Request::get('sortField') == 'vendor_order_id')
-                                                <i class="fa {{ Request::get('sortDirection') == 'asc' ? 'fa-sort-up' : 'fa-sort-down' }}"></i>
-                                            @endif
+                                            <?php if(Request::get('sortField') == 'vendor_order_id'): ?>
+                                                <i class="fa <?php echo e(Request::get('sortDirection') == 'asc' ? 'fa-sort-up' : 'fa-sort-down'); ?>"></i>
+                                            <?php endif; ?>
                                              </a>
                                         </th>
                                         <th>
-                                            <a href="{{ route('admin.order.all', ['sortField' => 'ship_fname', 'sortDirection' => Request::get('sortDirection') == 'asc' && Request::get('sortField') == 'ship_fname' ? 'desc' : 'asc']) }}">
+                                            <a href="<?php echo e(route('admin.order.all', ['sortField' => 'ship_fname', 'sortDirection' => Request::get('sortDirection') == 'asc' && Request::get('sortField') == 'ship_fname' ? 'desc' : 'asc'])); ?>">
                                             Buyer
-                                            @if(Request::get('sortField') == 'ship_fname')
-                                                <i class="fa {{ Request::get('sortDirection') == 'asc' ? 'fa-sort-up' : 'fa-sort-down' }}"></i>
-                                            @endif
+                                            <?php if(Request::get('sortField') == 'ship_fname'): ?>
+                                                <i class="fa <?php echo e(Request::get('sortDirection') == 'asc' ? 'fa-sort-up' : 'fa-sort-down'); ?>"></i>
+                                            <?php endif; ?>
                                              </a>
                                         </th>
                                         <th>
-                                            <a href="{{ route('admin.order.all', ['sortField' => 'tracking_info', 'sortDirection' => Request::get('sortDirection') == 'asc' && Request::get('sortField') == 'tracking_info' ? 'desc' : 'asc']) }}">
+                                            <a href="<?php echo e(route('admin.order.all', ['sortField' => 'tracking_info', 'sortDirection' => Request::get('sortDirection') == 'asc' && Request::get('sortField') == 'tracking_info' ? 'desc' : 'asc'])); ?>">
                                             Tracking Info
-                                            @if(Request::get('sortField') == 'tracking_info')
-                                                <i class="fa {{ Request::get('sortDirection') == 'asc' ? 'fa-sort-up' : 'fa-sort-down' }}"></i>
-                                            @endif
+                                            <?php if(Request::get('sortField') == 'tracking_info'): ?>
+                                                <i class="fa <?php echo e(Request::get('sortDirection') == 'asc' ? 'fa-sort-up' : 'fa-sort-down'); ?>"></i>
+                                            <?php endif; ?>
                                              </a>
                                         </th>
                                         <th>
-                                            <a href="{{ route('admin.order.all', ['sortField' => 'created_at', 'sortDirection' => Request::get('sortDirection') == 'asc' && Request::get('sortField') == 'created_at' ? 'desc' : 'asc']) }}">
+                                            <a href="<?php echo e(route('admin.order.all', ['sortField' => 'created_at', 'sortDirection' => Request::get('sortDirection') == 'asc' && Request::get('sortField') == 'created_at' ? 'desc' : 'asc'])); ?>">
                                             Created Date
-                                            @if(Request::get('sortField') == 'created_at')
-                                                <i class="fa {{ Request::get('sortDirection') == 'asc' ? 'fa-sort-up' : 'fa-sort-down' }}"></i>
-                                            @endif
+                                            <?php if(Request::get('sortField') == 'created_at'): ?>
+                                                <i class="fa <?php echo e(Request::get('sortDirection') == 'asc' ? 'fa-sort-up' : 'fa-sort-down'); ?>"></i>
+                                            <?php endif; ?>
                                             </a>
                                         </th>
                                         <th>
-                                            <a href="{{ route('admin.order.all', ['sortField' => 'updated_at', 'sortDirection' => Request::get('sortDirection') == 'asc' && Request::get('sortField') == 'updated_at' ? 'desc' : 'asc']) }}">
+                                            <a href="<?php echo e(route('admin.order.all', ['sortField' => 'updated_at', 'sortDirection' => Request::get('sortDirection') == 'asc' && Request::get('sortField') == 'updated_at' ? 'desc' : 'asc'])); ?>">
                                             Updated Date
-                                            @if(Request::get('sortField') == 'updated_at')
-                                                <i class="fa {{ Request::get('sortDirection') == 'asc' ? 'fa-sort-up' : 'fa-sort-down' }}"></i>
-                                            @endif
+                                            <?php if(Request::get('sortField') == 'updated_at'): ?>
+                                                <i class="fa <?php echo e(Request::get('sortDirection') == 'asc' ? 'fa-sort-up' : 'fa-sort-down'); ?>"></i>
+                                            <?php endif; ?>
                                             </a>
                                             
                                         </th>
                                         <th>Product</th>
                                         <th>
-                                            <a href="{{ route('admin.order.all', ['sortField' => 'total', 'sortDirection' => Request::get('sortDirection') == 'asc' && Request::get('sortField') == 'total' ? 'desc' : 'asc']) }}">
+                                            <a href="<?php echo e(route('admin.order.all', ['sortField' => 'total', 'sortDirection' => Request::get('sortDirection') == 'asc' && Request::get('sortField') == 'total' ? 'desc' : 'asc'])); ?>">
                                             Payment
-                                            @if(Request::get('sortField') == 'total')
-                                                <i class="fa {{ Request::get('sortDirection') == 'asc' ? 'fa-sort-up' : 'fa-sort-down' }}"></i>
-                                            @endif
+                                            <?php if(Request::get('sortField') == 'total'): ?>
+                                                <i class="fa <?php echo e(Request::get('sortDirection') == 'asc' ? 'fa-sort-up' : 'fa-sort-down'); ?>"></i>
+                                            <?php endif; ?>
                                             </a>
                                         </th>
                                         <th>Dim. & Wt. <a title="Default Settings" data-toggle="popover"
@@ -408,98 +486,104 @@ label.radio-card .card-content h5 {
                                                     class="fa fa-info-circle"></span></a>
                                         </th>
                                         <th>
-                                            <a href="{{ route('admin.order.all', ['sortField' => 'status', 'sortDirection' => Request::get('sortDirection') == 'asc' && Request::get('sortField') == 'status' ? 'desc' : 'asc']) }}">
+                                            <a href="<?php echo e(route('admin.order.all', ['sortField' => 'status', 'sortDirection' => Request::get('sortDirection') == 'asc' && Request::get('sortField') == 'status' ? 'desc' : 'asc'])); ?>">
                                             Status
-                                            @if(Request::get('sortField') == 'status')
-                                                <i class="fa {{ Request::get('sortDirection') == 'asc' ? 'fa-sort-up' : 'fa-sort-down' }}"></i>
-                                            @endif
+                                            <?php if(Request::get('sortField') == 'status'): ?>
+                                                <i class="fa <?php echo e(Request::get('sortDirection') == 'asc' ? 'fa-sort-up' : 'fa-sort-down'); ?>"></i>
+                                            <?php endif; ?>
                                             </a>
                                         </th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($order as $row)
+                                    <?php $__currentLoopData = $order; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                     <tr>
                                         <td class="text-center">
                                             <label class="fancy-checkbox">
-                                                <input class="checkbox-tick" type="checkbox" name="id[{{ $row->id }}]" value="{{ $row->id }}">
+                                                <input class="checkbox-tick" type="checkbox" name="id[<?php echo e($row->id); ?>]" value="<?php echo e($row->id); ?>">
                                                 <span></span>
                                             </label>
                                         </td>
-                                        <td>{{ $row->id }}</td>
-                                        <td>{{ $row->user_id }}</td>
+                                        <td><?php echo e($row->id); ?></td>
+                                        <td><?php echo e($row->user_id); ?></td>
                                         <td  style="text-align: center;">
-<!--                                            <img src="{{ asset('public/favicon.svg') }}" style="width:50px"
+<!--                                            <img src="<?php echo e(asset('public/favicon.svg')); ?>" style="width:50px"
                                                 alt="Channel Logo">-->
-                                            @if($row->channel)
-                                            {{ $row->channel }}
-                                            @else
+                                            <?php if($row->channel): ?>
+                                            <?php echo e($row->channel); ?>
+
+                                            <?php else: ?>
                                             Hyloship
-                                            @endif
+                                            <?php endif; ?>
                                         </td>
                                         <td class="text-center"> <a
-                                                href="{{ route('admin.order.detail',$row->id) }}">{{ $row->vendor_order_id }}</a>
+                                                href="<?php echo e(route('admin.order.detail',$row->id)); ?>"><?php echo e($row->vendor_order_id); ?></a>
                                         </td>
-                                        <td>{{$row->ship_fname}} {{$row->ship_lname}}</td>
+                                        <td><?php echo e($row->ship_fname); ?> <?php echo e($row->ship_lname); ?></td>
                                         <td> 
-                                            @if($row->ship_courier_id)
-                                                @if($row->ship_courier_id =='1')
-                                                <a href="{{ URL::to('tracking/' . $row->tracking_info) }}" target="_blank"> {{ $row->tracking_info}} </a>
-                                                    <!--<a href="{{$couriers[$row->ship_courier_id]['url'].$row->tracking_info }}" target="_blank"> {{ $row->tracking_info}} </a>-->
-                                                @else
-                                                    <a href="{{ URL::to('tracking/' . $row->tracking_info) }}" target="_blank"> {{ $row->tracking_info}} </a>
-                                                @endif
-                                            @else 
-                                                {{ $row->tracking_info ?? 'N/A' }} | 
-                                            @endif
-                                                @if($row->ship_courier_id)
+                                            <?php if($row->ship_courier_id): ?>
+                                                <?php if($row->ship_courier_id =='1'): ?>
+                                                <a href="<?php echo e(URL::to('tracking/' . $row->tracking_info)); ?>" target="_blank"> <?php echo e($row->tracking_info); ?> </a>
+                                                    <!--<a href="<?php echo e($couriers[$row->ship_courier_id]['url'].$row->tracking_info); ?>" target="_blank"> <?php echo e($row->tracking_info); ?> </a>-->
+                                                <?php else: ?>
+                                                    <a href="<?php echo e(URL::to('tracking/' . $row->tracking_info)); ?>" target="_blank"> <?php echo e($row->tracking_info); ?> </a>
+                                                <?php endif; ?>
+                                            <?php else: ?> 
+                                                <?php echo e($row->tracking_info ?? 'N/A'); ?> | 
+                                            <?php endif; ?>
+                                                <?php if($row->ship_courier_id): ?>
                                                 <br>
-                                                @if($row->ship_courier_id =='1')
-                                                <a href="{{ URL::to('admin/tracking/' . $row->tracking_info) }}" target="_blank">{{ $couriers[$row->ship_courier_id]['name'] }} 
-                                                    @if($row->shipping_courier_type == 'fa-plane') <span class="badge badge-info">Air</span> @elseif($row->shipping_courier_type == 'fa-truck') <span class="badge badge-warning">Surface</span> @elseif($row->shipping_courier_type == 'fa-motorcycle') <span class="badge badge-success">Local</span> @endif
+                                                <?php if($row->ship_courier_id =='1'): ?>
+                                                <a href="<?php echo e(URL::to('admin/tracking/' . $row->tracking_info)); ?>" target="_blank"><?php echo e($couriers[$row->ship_courier_id]['name']); ?> 
+                                                    <?php if($row->shipping_courier_type == 'fa-plane'): ?> <span class="badge badge-info">Air</span> <?php elseif($row->shipping_courier_type == 'fa-truck'): ?> <span class="badge badge-warning">Surface</span> <?php elseif($row->shipping_courier_type == 'fa-motorcycle'): ?> <span class="badge badge-success">Local</span> <?php endif; ?>
                                                 </a>
-                                                    <!--<a href="{{$couriers[$row->ship_courier_id]['url'].$row->tracking_info }}" target="_blank"> {{  $couriers[$row->ship_courier_id]['name']}} </a>-->
-                                                @else
-                                                    <a href="{{ URL::to('admin/tracking/' . $row->tracking_info) }}" target="_blank">{{ $couriers[$row->ship_courier_id]['name'] }} 
-                                                        @if($row->shipping_courier_type == 'fa-plane') <span class="badge badge-info">Air</span> @elseif($row->shipping_courier_type == 'fa-truck') <span class="badge badge-warning">Surface</span> @endif
+                                                    <!--<a href="<?php echo e($couriers[$row->ship_courier_id]['url'].$row->tracking_info); ?>" target="_blank"> <?php echo e($couriers[$row->ship_courier_id]['name']); ?> </a>-->
+                                                <?php else: ?>
+                                                    <a href="<?php echo e(URL::to('admin/tracking/' . $row->tracking_info)); ?>" target="_blank"><?php echo e($couriers[$row->ship_courier_id]['name']); ?> 
+                                                        <?php if($row->shipping_courier_type == 'fa-plane'): ?> <span class="badge badge-info">Air</span> <?php elseif($row->shipping_courier_type == 'fa-truck'): ?> <span class="badge badge-warning">Surface</span> <?php endif; ?>
                                                     </a>
-                                                @endif
-                                            @endif
+                                                <?php endif; ?>
+                                            <?php endif; ?>
                                         </td>
                                         <td><span class="fa fa-calendar"></span>&nbsp;
-                                            {{ \Carbon\Carbon::parse($row->created_at)->format('d M, Y') }}<br>
+                                            <?php echo e(\Carbon\Carbon::parse($row->created_at)->format('d M, Y')); ?><br>
                                             <span class="fa fa-clock-o"></span>&nbsp;
-                                            {{ \Carbon\Carbon::parse($row->created_at)->format('H:i') }}
+                                            <?php echo e(\Carbon\Carbon::parse($row->created_at)->format('H:i')); ?>
+
                                         </td>
                                         <td><span class="fa fa-calendar"></span>&nbsp;
-                                            {{ \Carbon\Carbon::parse($row->updated_at)->format('d M, Y') }}<br>
+                                            <?php echo e(\Carbon\Carbon::parse($row->updated_at)->format('d M, Y')); ?><br>
                                             <span class="fa fa-clock-o"></span>&nbsp;
-                                            {{ \Carbon\Carbon::parse($row->updated_at)->format('H:i') }}
+                                            <?php echo e(\Carbon\Carbon::parse($row->updated_at)->format('H:i')); ?>
+
                                         </td>
-                                        <td style="max-width:100px;white-space: normal" title="{{@$row->detail[0]->name}}">
-                                            {{ substr(@$row->detail[0]->name,0,32) }}
-                                            @if (strlen(@$row->detail[0]->name) >32)
+                                        <td style="max-width:100px;white-space: normal" title="<?php echo e(@$row->detail[0]->name); ?>">
+                                            <?php echo e(substr(@$row->detail[0]->name,0,32)); ?>
+
+                                            <?php if(strlen(@$row->detail[0]->name) >32): ?>
                                             ...
-                                            @endif
+                                            <?php endif; ?>
                                         </td>
-                                        <td> {{ $row->custom_total }} .00<br> {!! $row->payment_mode !!}</td>
-                                        <td><b>Dim :</b> {{ $row->length }}x{{ $row->breadth }}x{{ $row->height }}
-                                            <!--cm<br><b>Wt :</b> {{ $row->weight }} gm</td>-->
-                                            <br><b>Wt :</b> {{ $row->weight }} gm
-                                            <br><b>Vol. Wt :</b> {{ number_format(($row->length * $row->breadth * $row->height) / 5000, 2) }} kg
+                                        <td> <?php echo e($row->custom_total); ?> .00<br> <?php echo $row->payment_mode; ?></td>
+                                        <td><b>Dim :</b> <?php echo e($row->length); ?>x<?php echo e($row->breadth); ?>x<?php echo e($row->height); ?>
+
+                                            <!--cm<br><b>Wt :</b> <?php echo e($row->weight); ?> gm</td>-->
+                                            <br><b>Wt :</b> <?php echo e($row->weight); ?> gm
+                                            <br><b>Vol. Wt :</b> <?php echo e(number_format(($row->length * $row->breadth * $row->height) / 5000, 2)); ?> kg
                                         <td>
                                             
                                                 <div class="d-flex justify-content-between align-items-center">
 
                                                     <div>
-                                                        @if ($row->manifest_id && strip_tags($row->status) =='Shipped')
+                                                        <?php if($row->manifest_id && strip_tags($row->status) =='Shipped'): ?>
                                                             <span class="badge text-white bg-danger">Manifested</span>
-                                                        @else
-                                                            {!! $row->status !!}
-                                                        @endif
+                                                        <?php else: ?>
+                                                            <?php echo $row->status; ?>
+
+                                                        <?php endif; ?>
                                                     </div>
 
-                                                    @if($row->ship_courier_id)
+                                                    <?php if($row->ship_courier_id): ?>
                                                         <div class="dropdown ml-2">
                                                             <button class="btn btn-link p-0" type="button" data-toggle="dropdown">
                                                                 <i class="fa fa-ellipsis-v"></i>
@@ -507,24 +591,24 @@ label.radio-card .card-content h5 {
 
                                                             <div class="dropdown-menu dropdown-menu-right">
                                                                 <a class="dropdown-item"
-                                                                href="{{ route('admin.order.shippingprintparticular', [$row->id, $row->ship_courier_id]) }}"
+                                                                href="<?php echo e(route('admin.order.shippingprintparticular', [$row->id, $row->ship_courier_id])); ?>"
                                                                 target="_blank">
                                                                     <i class="fa fa-print"></i> View Label
                                                                 </a>
                                                             </div>
                                                         </div>
-                                                    @endif
+                                                    <?php endif; ?>
 
                                                 </div>
                                             </td>
                                     </tr>
-                                    @endforeach
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </tbody>
                             </table>
                         </div>
                     </div>
                 </div>
-                <!-- {{ $order->appends(['sortField' => $sortField, 'sortDirection' => $sortDirection,'start_date'=>$s_data,'end_date'=>$e_data,'vendor_order_id'=>$ven,'tracking_info'=>$trac,'order_status'=>$o_st,'ship_courier_id'=>$c_id])->links() }} -->
+                <!-- <?php echo e($order->appends(['sortField' => $sortField, 'sortDirection' => $sortDirection,'start_date'=>$s_data,'end_date'=>$e_data,'vendor_order_id'=>$ven,'tracking_info'=>$trac,'order_status'=>$o_st,'ship_courier_id'=>$c_id])->links()); ?> -->
             </div>
 
            
@@ -535,7 +619,8 @@ label.radio-card .card-content h5 {
 
 <!-- Pagination -->
 <div class="d-flex justify-content-center mt-3">
-{{ $order->appends(['sortField' => $sortField, 'sortDirection' => $sortDirection,'start_date'=>$s_data,'end_date'=>$e_data,'vendor_order_id'=>$ven,'tracking_info'=>$trac,'order_status'=>$o_st,'ship_courier_id'=>$c_id])->links() }}
+<?php echo e($order->appends(['sortField' => $sortField, 'sortDirection' => $sortDirection,'start_date'=>$s_data,'end_date'=>$e_data,'vendor_order_id'=>$ven,'tracking_info'=>$trac,'order_status'=>$o_st,'ship_courier_id'=>$c_id])->links()); ?>
+
 </div>
 <script type="text/javascript">
     (function($) {
@@ -545,35 +630,35 @@ label.radio-card .card-content h5 {
             if (action_type == 'download_all' || $('input[name^="id"]:checked').length > 0) {
                 var action_type = $('select[name=status]').val();
                 if(action_type == 'delete'){
-                    let action_route = `{{ route('admin.order.action') }}`;
+                    let action_route = `<?php echo e(route('admin.order.action')); ?>`;
                     $('#myForm').attr("action", action_route);
                 }else if(action_type == 'rto'){
-                    let action_route = `{{ route('admin.order.rto') }}`;
+                    let action_route = `<?php echo e(route('admin.order.rto')); ?>`;
                     $('#myForm').attr("action", action_route);  
                 }
                 else if(action_type == 'ndr'){
-                let action_route = `{{ route('admin.order.ndr') }}`;
+                let action_route = `<?php echo e(route('admin.order.ndr')); ?>`;
                 $('#myForm').attr("action", action_route);
             } else if(action_type == 'cancel'){
-                let action_route = `{{ route('admin.order.cancel') }}`;
+                let action_route = `<?php echo e(route('admin.order.cancel')); ?>`;
                 $('#myForm').attr("action", action_route);
             }
                 else if(action_type == 'unassign'){
-                    let action_route = `{{ route('admin.order.unassign') }}`;
+                    let action_route = `<?php echo e(route('admin.order.unassign')); ?>`;
                     $('#myForm').attr("action", action_route);
                 }
                 else if(action_type == 'download'){
-                    let action_route = `{{ route('admin.order.download') }}`;
+                    let action_route = `<?php echo e(route('admin.order.download')); ?>`;
                     $('#myForm').attr("action", action_route);
                 }
                 else if(action_type == 'download_all'){
-                    let action_route = `{{ route('admin.order.download_all') }}`;
+                    let action_route = `<?php echo e(route('admin.order.download_all')); ?>`;
                     $('#myForm').attr("action", action_route);
                     if ($('#myForm input[name="download_all_flag"]').length === 0) {
                         $('#myForm').append('<input type="hidden" name="download_all_flag" value="1">');
                     }
                     // Copy ALL filters from the search form
-                    $('form[action="{{ route('admin.order.all') }}"] select, form[action="{{ route('admin.order.all') }}"] input').each(function() {
+                    $('form[action="<?php echo e(route('admin.order.all')); ?>"] select, form[action="<?php echo e(route('admin.order.all')); ?>"] input').each(function() {
                         let name = $(this).attr('name');
                         if (name && name != '_token') {
                             let value = $(this).val();
@@ -586,19 +671,19 @@ label.radio-card .card-content h5 {
                     });
                 }
                 else if(action_type == 'manifest'){
-                    let action_route = `{{ route('admin.order.manifestmultiple') }}`;
+                    let action_route = `<?php echo e(route('admin.order.manifestmultiple')); ?>`;
                     $('#myForm').attr("action", action_route);
                 }
                 else if(action_type == 'clone'){
-                     let action_route = `{{ route('admin.order.action') }}`;
+                     let action_route = `<?php echo e(route('admin.order.action')); ?>`;
                     $('#myForm').attr("action", action_route);
                 }
                else if(action_type == 'printlabel'){
-                    let action_route = `{{ route('admin.order.printmultiple') }}`;
+                    let action_route = `<?php echo e(route('admin.order.printmultiple')); ?>`;
                     $('#myForm').attr("action", action_route);
                 }
                 else if(action_type == 'invoice'){
-                    let action_route = `{{ route('admin.order.printinvoice') }}`;
+                    let action_route = `<?php echo e(route('admin.order.printinvoice')); ?>`;
                     $('#myForm').attr("action", action_route);
                 }
                 $('#myForm').submit();
@@ -624,7 +709,7 @@ label.radio-card .card-content h5 {
             let originalAction = filterForm.attr('action');
             let originalMethod = filterForm.attr('method');
             
-            filterForm.attr('action', "{{ route('admin.order.download_all') }}");
+            filterForm.attr('action', "<?php echo e(route('admin.order.download_all')); ?>");
             filterForm.attr('method', "POST");
             
             if (filterForm.find('input[name="download_all_flag"]').length === 0) {
@@ -633,7 +718,7 @@ label.radio-card .card-content h5 {
 
             // Add CSRF token if not present
             if (filterForm.find('input[name="_token"]').length === 0) {
-                filterForm.append('<input type="hidden" name="_token" value="{{ csrf_token() }}">');
+                filterForm.append('<input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>">');
             }
             
             filterForm.submit();
@@ -657,4 +742,5 @@ label.radio-card .card-content h5 {
 </script>
 
 
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('admin.admin_layouts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\laravel\admin\resources\views/admin/order/all.blade.php ENDPATH**/ ?>

@@ -1,9 +1,9 @@
-@extends('admin.admin_layouts')
-@section('admin_content')
-    @php
+
+<?php $__env->startSection('admin_content'); ?>
+    <?php
         $session = Auth::guard('admin')->user();
         use App\Models\Admin\Order;
-    @endphp
+    ?>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="/admin/public/admin/semantic.min.js"></script>
     <link rel="stylesheet" href="/admin/public/admin/semantic.min.css">
@@ -179,13 +179,35 @@
         echo '>>';
     } ?></a></div>
                         <div class="col-md-3">
-                            <x-button type="import" route="{{ route('admin.bulkorder.create') }}" name="Import" />
-                            <x-button type="create" route="{{ route('admin.order.create') }}" name="Create" />
+                            <?php if (isset($component)) { $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4 = $component; } ?>
+<?php $component = $__env->getContainer()->make(Illuminate\View\AnonymousComponent::class, ['view' => 'components.button','data' => ['type' => 'import','route' => ''.e(route('admin.bulkorder.create')).'','name' => 'Import']]); ?>
+<?php $component->withName('button'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php $component->withAttributes(['type' => 'import','route' => ''.e(route('admin.bulkorder.create')).'','name' => 'Import']); ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4)): ?>
+<?php $component = $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4; ?>
+<?php unset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4); ?>
+<?php endif; ?>
+                            <?php if (isset($component)) { $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4 = $component; } ?>
+<?php $component = $__env->getContainer()->make(Illuminate\View\AnonymousComponent::class, ['view' => 'components.button','data' => ['type' => 'create','route' => ''.e(route('admin.order.create')).'','name' => 'Create']]); ?>
+<?php $component->withName('button'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php $component->withAttributes(['type' => 'create','route' => ''.e(route('admin.order.create')).'','name' => 'Create']); ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4)): ?>
+<?php $component = $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4; ?>
+<?php unset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4); ?>
+<?php endif; ?>
                         </div>
                     </div>
 
                     <div class="card-body">
-                        <form action="{{ route('admin.order.index') }}" method="GET">
+                        <form action="<?php echo e(route('admin.order.index')); ?>" method="GET">
                             <div class="col-md-12">
                                 <?php 
                             $trac = $ven = '';
@@ -198,49 +220,81 @@
         $c_id = $re_data['seller_id'] ?? 0;
     }
                             ?>
-                                <div class="show_more" style="width: 100%; {{ empty($re_data) ? 'display:none;' : '' }}">
+                                <div class="show_more" style="width: 100%; <?php echo e(empty($re_data) ? 'display:none;' : ''); ?>">
                                     <div class="row">
-                                        <x-field type="textarea" label="Order Number" placeholder="Order Number"
-                                            name="vendor_order_id" value="{{ $ven ?? '' }}" />
-                                        <!--<x-field type="text" label="AWB" placeholder="AWB" name="tracking_info" value="{{ $trac ?? '' }}" />-->
+                                        <?php if (isset($component)) { $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4 = $component; } ?>
+<?php $component = $__env->getContainer()->make(Illuminate\View\AnonymousComponent::class, ['view' => 'components.field','data' => ['type' => 'textarea','label' => 'Order Number','placeholder' => 'Order Number','name' => 'vendor_order_id','value' => ''.e($ven ?? '').'']]); ?>
+<?php $component->withName('field'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php $component->withAttributes(['type' => 'textarea','label' => 'Order Number','placeholder' => 'Order Number','name' => 'vendor_order_id','value' => ''.e($ven ?? '').'']); ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4)): ?>
+<?php $component = $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4; ?>
+<?php unset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4); ?>
+<?php endif; ?>
+                                        <!--<?php if (isset($component)) { $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4 = $component; } ?>
+<?php $component = $__env->getContainer()->make(Illuminate\View\AnonymousComponent::class, ['view' => 'components.field','data' => ['type' => 'text','label' => 'AWB','placeholder' => 'AWB','name' => 'tracking_info','value' => ''.e($trac ?? '').'']]); ?>
+<?php $component->withName('field'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php $component->withAttributes(['type' => 'text','label' => 'AWB','placeholder' => 'AWB','name' => 'tracking_info','value' => ''.e($trac ?? '').'']); ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4)): ?>
+<?php $component = $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4; ?>
+<?php unset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4); ?>
+<?php endif; ?>-->
 
                                         <div class="form-group col-md-4">
                                             <label class="form-control-label">User</label>
                                             <select name="seller_id" class="form-control">
                                                 <option value="0">User</option>
-                                                @foreach($userwithneworder as $user)
-                                                    <option value="{{ $user->id }}" {{ $c_id == $user->id ? 'selected' : '' }}>
-                                                        {{ $user->name }}</option>
-                                                @endforeach
+                                                <?php $__currentLoopData = $userwithneworder; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                    <option value="<?php echo e($user->id); ?>" <?php echo e($c_id == $user->id ? 'selected' : ''); ?>>
+                                                        <?php echo e($user->name); ?></option>
+                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                             </select>
                                         </div>
 
                                         <div class="form-group col-md-4">
                                             <label class="form-control-label">Status</label>
                                             <select name="status_order" class="form-control">
-                                                <option value="1" {{ $sta == '1' ? 'selected' : '' }}>New</option>
-                                                <option value="4" {{ $sta == '4' ? 'selected' : '' }}>Cancelled</option>
-                                                <option value="0" {{ $sta == '0' ? 'selected' : '' }}>Both</option>
+                                                <option value="1" <?php echo e($sta == '1' ? 'selected' : ''); ?>>New</option>
+                                                <option value="4" <?php echo e($sta == '4' ? 'selected' : ''); ?>>Cancelled</option>
+                                                <option value="0" <?php echo e($sta == '0' ? 'selected' : ''); ?>>Both</option>
                                             </select>
                                         </div>
 
                                         <div class="form-group col-md-3">
                                             <label class="form-control-label">Payment Type</label>
                                             <select name="payment_mode_filter" class="form-control">
-                                                <option value="0" {{ ($re_data['payment_mode_filter'] ?? '0') == '0' ? 'selected' : '' }}>All Payments</option>
-                                                <option value="1" {{ ($re_data['payment_mode_filter'] ?? '0') == '1' ? 'selected' : '' }}>COD Only</option>
-                                                <option value="2" {{ ($re_data['payment_mode_filter'] ?? '0') == '2' ? 'selected' : '' }}>Prepaid Only</option>
+                                                <option value="0" <?php echo e(($re_data['payment_mode_filter'] ?? '0') == '0' ? 'selected' : ''); ?>>All Payments</option>
+                                                <option value="1" <?php echo e(($re_data['payment_mode_filter'] ?? '0') == '1' ? 'selected' : ''); ?>>COD Only</option>
+                                                <option value="2" <?php echo e(($re_data['payment_mode_filter'] ?? '0') == '2' ? 'selected' : ''); ?>>Prepaid Only</option>
                                             </select>
                                         </div>
 
                                         <input type="hidden" name="sortField"
-                                            value="{{ $_GET['sortField'] ?? $sortField }}">
+                                            value="<?php echo e($_GET['sortField'] ?? $sortField); ?>">
                                         <input type="hidden" name="sortDirection"
-                                            value="{{ $_GET['sortDirection'] ?? $sortDirection }}">
+                                            value="<?php echo e($_GET['sortDirection'] ?? $sortDirection); ?>">
                                     </div>
 
                                     <div class="row">
-                                        <x-button size="col-lg-3" type="submit" name="Search" />
+                                        <?php if (isset($component)) { $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4 = $component; } ?>
+<?php $component = $__env->getContainer()->make(Illuminate\View\AnonymousComponent::class, ['view' => 'components.button','data' => ['size' => 'col-lg-3','type' => 'submit','name' => 'Search']]); ?>
+<?php $component->withName('button'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php $component->withAttributes(['size' => 'col-lg-3','type' => 'submit','name' => 'Search']); ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4)): ?>
+<?php $component = $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4; ?>
+<?php unset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4); ?>
+<?php endif; ?>
                                     </div>
                                 </div>
                             </div>
@@ -250,43 +304,43 @@
             </div>
             <div class="sts">
                 <i class="fa fa-info-circle"></i>
-                <span><b>Total Orders : <span class="badge-pill bg-primary">{{$totalOrdersCount}}</span></b></span>
+                <span><b>Total Orders : <span class="badge-pill bg-primary"><?php echo e($totalOrdersCount); ?></span></b></span>
             </div>
             <div class="col-xl-12">
-                <form id="myForm" action="{{ route('admin.order.action') }}" method="POST">
-                    @csrf
+                <form id="myForm" action="<?php echo e(route('admin.order.action')); ?>" method="POST">
+                    <?php echo csrf_field(); ?>
                     <div class="card new_orders">
                         <div class="header" style="padding-bottom: 0;">
                             <h2>Order List</h2><br>
 
                             <div class="row col-md-12">
                                 <div class="form-group col-md-4">
-                                    <label class="mr-2">@lang('Action')</label>
+                                    <label class="mr-2"><?php echo app('translator')->get('Action'); ?></label>
                                     <select class="form-control" name="status" id="myselect">
-                                        <option value="" selected disabled>@lang('Select One')</option>
+                                        <option value="" selected disabled><?php echo app('translator')->get('Select One'); ?></option>
                                         <option value="awb">AWB</option>
                                         <option value="delete">Delete</option>
                                         <option value="download">Download</option>
                                         <option value="downloadupdate">Download for update</option>
-                                        @if($session->id == '100' || $session->id == '1' || $session->id == '69')
+                                        <?php if($session->id == '100' || $session->id == '1' || $session->id == '69'): ?>
                                             <option value="updateweight">Update weight to 500</option>
-                                        @endif
+                                        <?php endif; ?>
                                     </select>
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label>Select Pickup Address</label><span class="required"> (For AWB)</span>:
                                     <select class="form-control" name="multiplewarehouse_id">
-                                        @foreach ($warehouse as $ware)
-                                            <option value="{{ $ware->id }}">{{ $ware->name }}</option>
-                                        @endforeach
+                                        <?php $__currentLoopData = $warehouse; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $ware): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                            <option value="<?php echo e($ware->id); ?>"><?php echo e($ware->name); ?></option>
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     </select>
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label>Select Return Address</label><span class="required"> (For AWB)</span>:
                                     <select class="form-control" name="multiplereturn_warehouse_id">
-                                        @foreach ($warehouse as $ware)
-                                            <option value="{{ $ware->id }}">{{ $ware->name }}</option>
-                                        @endforeach
+                                        <?php $__currentLoopData = $warehouse; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $ware): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                            <option value="<?php echo e($ware->id); ?>"><?php echo e($ware->name); ?></option>
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     </select>
                                 </div>
                             </div>
@@ -320,58 +374,63 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach($order as $row)
+                                            <?php $__currentLoopData = $order; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                 <tr>
                                                     <td class="text-center">
                                                         <label class="fancy-checkbox">
                                                             <input class="checkbox-tick" type="checkbox"
-                                                                name="id[{{ $row->id }}]" value="{{ $row->id }}">
+                                                                name="id[<?php echo e($row->id); ?>]" value="<?php echo e($row->id); ?>">
                                                             <span></span>
                                                         </label>
                                                     </td>
-                                                    <td>{{ $row->id }}</td>
-                                                    <td>{{ $row->order_id }}</td>
-                                                    <td>{{ substr($row->user_id, 0, 32) }}</td>
+                                                    <td><?php echo e($row->id); ?></td>
+                                                    <td><?php echo e($row->order_id); ?></td>
+                                                    <td><?php echo e(substr($row->user_id, 0, 32)); ?></td>
                                                     <td class="text-center">
-                                                        @if($row->channel == 'Hyloship')
-                                                            {{ $row->channel }}
-                                                        @elseif($row->channel == 'Shopify')
-                                                            <img src="{{ asset('public/channel/shopify.png') }}" style="width:30px"
+                                                        <?php if($row->channel == 'Hyloship'): ?>
+                                                            <?php echo e($row->channel); ?>
+
+                                                        <?php elseif($row->channel == 'Shopify'): ?>
+                                                            <img src="<?php echo e(asset('public/channel/shopify.png')); ?>" style="width:30px"
                                                                 alt="Channel Logo">
-                                                        @elseif($row->channel == 'WhatsApp')
-                                                            <img src="{{ asset('public/channel/WhatsApp.jpg') }}" style="width:30px"
+                                                        <?php elseif($row->channel == 'WhatsApp'): ?>
+                                                            <img src="<?php echo e(asset('public/channel/WhatsApp.jpg')); ?>" style="width:30px"
                                                                 alt="Channel Logo">
-                                                        @elseif($row->channel == 'Woocommerce')
-                                                            <img src="{{ asset('public/channel/woocommerce.png') }}"
+                                                        <?php elseif($row->channel == 'Woocommerce'): ?>
+                                                            <img src="<?php echo e(asset('public/channel/woocommerce.png')); ?>"
                                                                 style="width:30px" alt="Channel Logo">
-                                                        @else
-                                                            {{ $row->channel }}
-                                                        @endif
+                                                        <?php else: ?>
+                                                            <?php echo e($row->channel); ?>
+
+                                                        <?php endif; ?>
                                                     </td>
                                                     <td class="text-center"><a
-                                                            href="{{ route('admin.order.detail', $row->id) }}">{{ $row->vendor_order_id }}</a>
+                                                            href="<?php echo e(route('admin.order.detail', $row->id)); ?>"><?php echo e($row->vendor_order_id); ?></a>
                                                     </td>
-                                                    <td>{{ $row->ship_fname }} {{ $row->ship_lname }}</td>
+                                                    <td><?php echo e($row->ship_fname); ?> <?php echo e($row->ship_lname); ?></td>
                                                     <td>
                                                         <span
-                                                            class="fa fa-calendar"></span>&nbsp;{{ \Carbon\Carbon::parse($row->created_at)->format('d M, Y') }}<br>
+                                                            class="fa fa-calendar"></span>&nbsp;<?php echo e(\Carbon\Carbon::parse($row->created_at)->format('d M, Y')); ?><br>
                                                         <span
-                                                            class="fa fa-clock-o"></span>&nbsp;{{ \Carbon\Carbon::parse($row->created_at)->format('H:i') }}
+                                                            class="fa fa-clock-o"></span>&nbsp;<?php echo e(\Carbon\Carbon::parse($row->created_at)->format('H:i')); ?>
+
                                                     </td>
-                                                    <td>{{ substr(@$row->detail[0]->name, 0, 32) }}{{ strlen(@$row->detail[0]->name) > 32 ? '...' : '' }}
+                                                    <td><?php echo e(substr(@$row->detail[0]->name, 0, 32)); ?><?php echo e(strlen(@$row->detail[0]->name) > 32 ? '...' : ''); ?>
+
                                                     </td>
-                                                    <td>{{ $row->custom_total }} .00<br>{!! $row->payment_mode !!}</td>
-                                                    <td><b>Dim :</b> {{ $row->length }}x{{ $row->breadth }}x{{ $row->height }}
-                                                        cm<br><b>Wt :</b> {{ $row->weight }} gm
-                                                        <br><b>Vol. Wt :</b> {{ number_format(($row->length * $row->breadth * $row->height) / 5000, 2) }} kg
-                                                    <td>{!! $row->status !!}</td>
+                                                    <td><?php echo e($row->custom_total); ?> .00<br><?php echo $row->payment_mode; ?></td>
+                                                    <td><b>Dim :</b> <?php echo e($row->length); ?>x<?php echo e($row->breadth); ?>x<?php echo e($row->height); ?>
+
+                                                        cm<br><b>Wt :</b> <?php echo e($row->weight); ?> gm
+                                                        <br><b>Vol. Wt :</b> <?php echo e(number_format(($row->length * $row->breadth * $row->height) / 5000, 2)); ?> kg
+                                                    <td><?php echo $row->status; ?></td>
                                                     <!--<td>-->
                                                     <!--    <div class="btn-group">-->
                                                     <!--        <a href="javascript:void(0)" class="btn btn-primary assign"-->
-                                                    <!--            data-order-id="{{ $row->id }}">-->
+                                                    <!--            data-order-id="<?php echo e($row->id); ?>">-->
                                                     <!--            <i class="fa fa-cart-plus" aria-hidden="true"></i>-->
                                                     <!--        </a>-->
-                                                    <!--        <a href="{{ route('admin.order.edit', $row->id) }}"-->
+                                                    <!--        <a href="<?php echo e(route('admin.order.edit', $row->id)); ?>"-->
                                                     <!--            class="btn btn-secondary" title="Edit">-->
                                                     <!--            <i class="fa fa-edit" aria-hidden="true"></i>-->
                                                     <!--        </a>-->
@@ -381,11 +440,11 @@
                                                         <div class="btn-group">
                                                             <a href="javascript:void(0)"
                                                                 class="btn btn-primary assign btn-sm"
-                                                                data-order-id="{{ $row->id }}"
+                                                                data-order-id="<?php echo e($row->id); ?>"
                                                                 style="font-size: 11px;">
                                                                 Ship Now
                                                             </a>
-                                                            <a href="{{ route('admin.order.edit', $row->id) }}"
+                                                            <a href="<?php echo e(route('admin.order.edit', $row->id)); ?>"
                                                                 class="btn btn-secondary btn-sm" title="Edit"
                                                                 style="font-size: 11px; margin-left: 5px;">
                                                                 Edit
@@ -394,7 +453,7 @@
                                                     </td>
                                                     
                                                 </tr>
-                                                <tr id="order_{{ $row->id }}" data-order-id="{{ $row->id }}"
+                                                <tr id="order_<?php echo e($row->id); ?>" data-order-id="<?php echo e($row->id); ?>"
                                                     class="quick_assign" style="display: none">
 
                                                     <td colspan="13" style="padding: 0;">
@@ -403,7 +462,7 @@
                                                                 <h5
                                                                     class="m-0 mt-2 font-weight-bold text-primary invoice-heading">
                                                                     Quick Assign</h5>
-                                                                <span onclick="$('#order_{{ $row->id }}').hide();"
+                                                                <span onclick="$('#order_<?php echo e($row->id); ?>').hide();"
                                                                     class="btn btn-secondary"
                                                                     style="float:right;margin-top:-30px;margin-right:10px">Hide</span>
                                                             </div>
@@ -413,43 +472,45 @@
                                                                     <div class="form-group col-md-4">
                                                                         <label class="form-control-label">Select Pickup
                                                                             Address:</label><span class="required"> *</span>
-                                                                        @if($row->reverse_order == '1')
+                                                                        <?php if($row->reverse_order == '1'): ?>
                                                                             <br><span style="color:red">
                                                                                 This is a Reverse order, pickup address will be
                                                                                 treated as shipping address
                                                                             </span>
-                                                                        @endif
+                                                                        <?php endif; ?>
                                                                         <input type="hidden" name="order_id"
-                                                                            value="{{ $row->id }}">
+                                                                            value="<?php echo e($row->id); ?>">
                                                                         <select class="form-control" name="warehouse_id"
-                                                                            data-id="{{ $row->id }}" required>
-                                                                            @foreach ($warehouse as $ware)
-                                                                                <option value="{{ $ware->id }}">{{ $ware->name }}
+                                                                            data-id="<?php echo e($row->id); ?>" required>
+                                                                            <?php $__currentLoopData = $warehouse; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $ware): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                                                <option value="<?php echo e($ware->id); ?>"><?php echo e($ware->name); ?>
+
                                                                                 </option>
-                                                                            @endforeach
+                                                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                                                         </select>
                                                                     </div>
-                                                                    @if($row->reverse_order == '0')
+                                                                    <?php if($row->reverse_order == '0'): ?>
                                                                         <div class="form-group col-md-4">
                                                                             <label class="form-control-label">Select Return Address
                                                                                 (in case of RTO):</label><span class="required">
                                                                                 *</span>
                                                                             <select class="form-control" name="return_warehouse_id"
-                                                                                data-id="{{ $row->id }}" required>
-                                                                                @foreach ($warehouse as $ware)
-                                                                                    <option value="{{ $ware->id }}">{{ $ware->name }}
+                                                                                data-id="<?php echo e($row->id); ?>" required>
+                                                                                <?php $__currentLoopData = $warehouse; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $ware): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                                                    <option value="<?php echo e($ware->id); ?>"><?php echo e($ware->name); ?>
+
                                                                                     </option>
-                                                                                @endforeach
+                                                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                                                             </select>
                                                                         </div>
-                                                                    @endif
+                                                                    <?php endif; ?>
                                                                 </div>
                                                                 <div class="row courierList"></div>
                                                             </div>
                                                         </div>
                                                     </td>
                                                 </tr>
-                                            @endforeach
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                         </tbody>
                                     </table>
                                 </div>
@@ -465,7 +526,8 @@
 
     <!-- Pagination -->
     <div class="d-flex justify-content-center mt-3">
-        {{ $order->links() }}
+        <?php echo e($order->links()); ?>
+
     </div>
 
 
@@ -482,10 +544,10 @@
                     lastExpandedRow.slideUp('fast');
                 }
                 $.get({
-                    url: "{{ route('admin.order.get.courier') }}",
+                    url: "<?php echo e(route('admin.order.get.courier')); ?>",
                     data: {
                         order_id: $(this).data('order-id'),
-                        warehouse_id: {{  @$warehouse[0]->id ?? 0 }} 
+                        warehouse_id: <?php echo e(@$warehouse[0]->id ?? 0); ?> 
                     },
                     beforeSend: function () {
                         $('#loader').removeClass('hidden')
@@ -529,7 +591,7 @@
                 var quickAssignRow = $('#order_' + $(this).data('id'));
                 let id = $(this).data('id');
                 $.get({
-                    url: "{{ route('admin.order.get.courier') }}",
+                    url: "<?php echo e(route('admin.order.get.courier')); ?>",
                     data: {
                         order_id: id,
                         warehouse_id: $(this).val()
@@ -574,7 +636,7 @@
                 var data = $('#order_' + id + ' :input').serialize();
                 $.ajax({
                     method: 'GET',
-                    url: "{{ route('admin.order.assign') }}",
+                    url: "<?php echo e(route('admin.order.assign')); ?>",
                     data: data,
                     beforeSend: function () {
                         $('#loader').removeClass('hidden');
@@ -609,37 +671,37 @@
                 if ($('input[name^="id"]:checked').length > 0) {
                     var action_type = $('select[name=status]').val();
                     if (action_type == 'delete') {
-                        let action_route = `{{ route('admin.order.action') }}`;
+                        let action_route = `<?php echo e(route('admin.order.action')); ?>`;
                         $('#myForm').attr("action", action_route);
                     } else if (action_type == 'on_hold') {
-                        let action_route = `{{ route('admin.order.on_hold') }}`;
+                        let action_route = `<?php echo e(route('admin.order.on_hold')); ?>`;
                         $('#myForm').attr("action", action_route);
                     } else if (action_type == 'cancel') {
-                        let action_route = `{{ route('admin.order.cancel') }}`;
+                        let action_route = `<?php echo e(route('admin.order.cancel')); ?>`;
                         $('#myForm').attr("action", action_route);
                     }
                     else if (action_type == 'rto') {
-                        let action_route = `{{ route('admin.order.rto') }}`;
+                        let action_route = `<?php echo e(route('admin.order.rto')); ?>`;
                         $('#myForm').attr("action", action_route);
                     }
                     else if (action_type == 'ndr') {
-                        let action_route = `{{ route('admin.order.ndr') }}`;
+                        let action_route = `<?php echo e(route('admin.order.ndr')); ?>`;
                         $('#myForm').attr("action", action_route);
                     }
                     else if (action_type == 'refund') {
-                        let action_route = `{{ route('admin.order.refund') }}`;
+                        let action_route = `<?php echo e(route('admin.order.refund')); ?>`;
                         $('#myForm').attr("action", action_route);
                     }
                     else if (action_type == 'download') {
-                        let action_route = `{{ route('admin.order.download') }}`;
+                        let action_route = `<?php echo e(route('admin.order.download')); ?>`;
                         $('#myForm').attr("action", action_route);
                     }
                     else if (action_type == 'downloadupdate') {
-                        let action_route = `{{ route('admin.order.downloadupdate') }}`;
+                        let action_route = `<?php echo e(route('admin.order.downloadupdate')); ?>`;
                         $('#myForm').attr("action", action_route);
                     }
                     else if (action_type == 'updateweight') {
-                        let action_route = `{{ route('admin.order.updateweightto500') }}`;
+                        let action_route = `<?php echo e(route('admin.order.updateweightto500')); ?>`;
                         $('#myForm').attr("action", action_route);
                     }
                     $('#loader').removeClass('hidden')
@@ -669,4 +731,5 @@
         });
     </script>
 
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('admin.admin_layouts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\laravel\admin\resources\views/admin/order/index.blade.php ENDPATH**/ ?>
